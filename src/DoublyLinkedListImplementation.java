@@ -53,6 +53,50 @@ class DoublyLinkedList
 		}
 	}
 	
+	public void delete(int data)
+	{
+		if (head == null) {
+            System.out.println("Empty list!!!");
+            return;
+        }
+
+        Box temp = head;
+
+       
+        if (temp != null && temp.data == data) {
+            head = temp.proPointer; 
+            if (head != null) {
+                head.prePointer = null; 
+            }
+            System.out.println(data + " deleted");
+            return;
+        }
+
+       
+        while (temp != null && temp.data != data) {
+            temp = temp.proPointer;
+        }
+
+        
+        if (temp == null) {
+            System.out.println(data + " value is not present");
+            return;
+        }
+
+        
+        if (temp.proPointer != null) {
+            temp.proPointer.prePointer = temp.prePointer;
+        }
+
+        if (temp.prePointer != null) {
+            temp.prePointer.proPointer = temp.proPointer;
+        }
+
+        System.out.println(data + " deleted");
+    }
+		
+	
+	
 }
 public class DoublyLinkedListImplementation {
 
@@ -63,8 +107,14 @@ public class DoublyLinkedListImplementation {
 		li.insert(10);
 		li.insert(20);
 		li.insert(30);
+		li.insert(30);
 		
 		li.retrieve();
+		
+		System.out.println("After removing");
+		li.delete(20);
+		li.retrieve();
+		
 
 	}
 
