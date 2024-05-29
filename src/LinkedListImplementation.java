@@ -69,11 +69,13 @@ class LinkedList
 			}
 			else
 			{
+				int f = 0;
 				Node t = head;
 				while(t.next != null )
 				{
 					if(t.next.data == data)
 					{
+						f = 1;
 						t.next = t.next.next;
 					}
 					else
@@ -81,6 +83,12 @@ class LinkedList
 						t = t.next;
 					}
 				}
+				
+				if(f == 0)
+				{
+					System.out.println(data+" is not present");
+				}
+				
 			}
 		}
 		
@@ -106,7 +114,7 @@ public class LinkedListImplementation {
 		li.remove(3);
 		//li.retrieve();
 		li.remove(1);
-		li.remove(5);
+		li.remove(15);
 		li.retrieve();
 		
 	}
